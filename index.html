@@ -2,22 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Автосерфинг</title>
-  <meta http-equiv="refresh" content="15">
+  <title>Обмен трафиком</title>
   <style>
-    body { margin: 0; background: #000; color: #fff; text-align: center; }
-    iframe { width: 100vw; height: 100vh; border: none; }
+    body { font-family: sans-serif; text-align: center; margin: 40px; }
+    iframe { width: 90%; height: 600px; border: none; margin-top: 20px; }
   </style>
 </head>
 <body>
+  <h1>🚀 Обмен трафиком</h1>
+  <p>Каждые 15 секунд — новый сайт. Чтобы добавить свой — нажми ниже.</p>
+  <a href="https://github.com/Normalov/surf-exchange/edit/main/sites.json" target="_blank">
+    ✏️ Добавить свой сайт
+  </a>
+  <iframe id="frame" src=""></iframe>
+
   <script>
-    const urls = [
-      "https://example.com",
-      "https://example.org",
-      "https://example.net"
-    ];
-    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
-    document.write(`<iframe src="${randomUrl}"></iframe>`);
+    fetch('sites.json')
+      .then(res => res.json())
+      .then(urls => {
+        let i = 0;
+        const frame = document.getElementById('frame');
+        frame.src = urls[i];
+        setInterval(() => {
+          i = (i + 1) % urls.length;
+          frame.src = urls[i];
+        }, 15000);
+      });
   </script>
 </body>
 </html>
