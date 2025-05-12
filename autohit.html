@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Автосерфинг сайтов</title>
+  <meta http-equiv="refresh" content="15">
+  <style>
+    body { margin: 0; background: #000; color: #fff; font-family: sans-serif; text-align: center; }
+    iframe { width: 100vw; height: 100vh; border: none; }
+  </style>
+</head>
+<body>
+  <script>
+    const urls = [
+      "https://example.com",
+      "https://example.org",
+      "https://example.net"
+    ];
+    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+    document.write(`<iframe src="${randomUrl}"></iframe>`);
+  </script>
+</body>
+</html>
